@@ -31,17 +31,23 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
     }
 
-    override fun onSensorChanged(event: SensorEvent?) {
+    override fun onSensorChanged(p0: SensorEvent?) {
+        textViewX.text = p0!!.values[0].toString()
+        textViewY.text = p0!!.values[1].toString()
+        textViewZ.text = p0!!.values[2].toString()
 
-        textViewX.setBackgroundColor(Color.RED)
-
-        textViewY.setBackgroundColor(Color.WHITE)
-        textViewZ.setBackgroundColor(Color.BLUE)
+        if (p0.values[0].equals(p0.values[0])) {
+            textViewX.setBackgroundColor(Color.RED)
+        } else if (p0.values[1].equals(p0.values[1])) {
+                textViewY.setBackgroundColor(Color.WHITE)
+            } else if (p0.values[2].equals(p0.values[2])) {
+            textViewZ.setBackgroundColor(Color.BLUE)
+                }
     }
 
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
-        textViewX.setBackgroundColor(Color.RED)
-        textViewY.setBackgroundColor(Color.WHITE)
+//        textViewX.setBackgroundColor(Color.RED)
+//        textViewY.setBackgroundColor(Color.WHITE)
         textViewZ.setBackgroundColor(Color.BLUE)
     }
 
